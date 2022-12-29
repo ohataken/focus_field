@@ -7,4 +7,9 @@ class SessionsController < ApplicationController
     session[:user_id] = @resource.id
     redirect_to sessions_path
   end
+
+  def destroy
+    session.delete(:user_id)
+    redirect_to sessions_path
+  end
 end
