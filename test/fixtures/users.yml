@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_hex: MyString
+  name: MyString
+  crypted_password: MyString
+  salt: MyString
+  timezone: MyString
+
+two:
+  id_hex: MyString
+  name: MyString
+  crypted_password: MyString
+  salt: MyString
+  timezone: MyString
