@@ -10,4 +10,18 @@
       <p>Find me in app/views/cards/index.html.erb</p>
     </div>
   </div>
+  <div class="box">
+    <div class="container">
+      <% @resources.each do |resource| %>
+        <div class="media">
+          <div class="media-content">
+            <div class="content">
+              <%= resource.name %>
+              <%= link_to "edit", edit_card_path(resource.id_hex) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </body>
