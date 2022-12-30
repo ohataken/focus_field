@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
   def current_user
-    @_current_user = User.find_by(id: session[:user_id])
+    @_current_user ||= User.find_by(id: session[:user_id])
   end
 end
