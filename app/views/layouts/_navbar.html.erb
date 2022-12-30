@@ -3,5 +3,13 @@
     <div class="navbar-brand">
       <%= link_to "focus field", root_url, class: "navbar-item" %>
     </div>
+    <div class="navbar-end">
+    <% if logged_in? %>
+    <% else %>
+      <div class="navbar-item">
+        <%= link_to "sign in", new_sessions_path, class: "button is-primary" %>
+      </div>
+    <% end %>
+    </div>
   </div>
 </nav>
