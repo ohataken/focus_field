@@ -11,6 +11,9 @@ default: &default
 
 development:
   <<: *default
+  host: localhost
+  username: postgres
+  password: mysecretpassword
   database: focus_field_development
 
 # Warning: The database defined as "test" will be erased and
