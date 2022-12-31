@@ -18,6 +18,7 @@
             <div class="content">
               <%= resource.name %>
               <%= link_to "edit", edit_card_path(resource.id_hex) %>
+              <%= button_to "finish", card_card_finishes_path(resource.id_hex), method: :post, class: "button" %>
             </div>
           </div>
         </div>
