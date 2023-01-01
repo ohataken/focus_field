@@ -4,52 +4,50 @@
 </head>
 <body>
   <%= render partial: "layouts/navbar" %>
-  <div class="box">
-    <div class="section">
-      <div class="container">
-        <div class="media">
-          <%= form_with model: Card.new, path: cards_path do |f| %>
-            <div class="field is-horizontal">
-              <div class="field-label is-normal">
-                <%= f.label :name, class: "label" %>
-              </div>
-              <div class="field-body">
-                <div class="field has-addons">
-                  <div class="control is-expanded">
-                    <%= f.text_field :name, class: "input" %>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <%= f.submit "create", class: "button is-link" %>
-                  </div>
+  <div class="section">
+    <div class="container">
+      <div class="media">
+        <%= form_with model: Card.new, path: cards_path do |f| %>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <%= f.label :name, class: "label" %>
+            </div>
+            <div class="field-body">
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <%= f.text_field :name, class: "input" %>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </div>
-        <% @resources.each do |resource| %>
-          <div class="media">
-            <div class="media-left">
-              <%= image_tag card_card_images_path(resource.id_hex), class: "image is-48x48" %>
-            </div>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <%= resource.name %>
-                </p>
-              </div>
-              <div class="content is-small">
-              <%= resource.id_hex %>, created at <%= resource.created_at %>
-              </div>
-              <div class="buttons">
-                <%= link_to "edit", edit_card_path(resource.id_hex), class: "button is-small" %>
-                <%= button_to "finish", card_card_finishes_path(resource.id_hex), method: :post, class: "button is-small"%>
+              <div class="field">
+                <div class="control">
+                  <%= f.submit "create", class: "button is-link" %>
+                </div>
               </div>
             </div>
           </div>
         <% end %>
       </div>
+      <% @resources.each do |resource| %>
+        <div class="media">
+          <div class="media-left">
+            <%= image_tag card_card_images_path(resource.id_hex), class: "image is-48x48" %>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <%= resource.name %>
+              </p>
+            </div>
+            <div class="content is-small">
+            <%= resource.id_hex %>, created at <%= resource.created_at %>
+            </div>
+            <div class="buttons">
+              <%= link_to "edit", edit_card_path(resource.id_hex), class: "button is-small" %>
+              <%= button_to "finish", card_card_finishes_path(resource.id_hex), method: :post, class: "button is-small"%>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </body>
