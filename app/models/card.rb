@@ -6,4 +6,8 @@ class Card < ApplicationRecord
   after_initialize do |user|
     user.id_hex ||= SecureRandom.hex(16)
   end
+
+  def finished?
+    finished_at.present?
+  end
 end
