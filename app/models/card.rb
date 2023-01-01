@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
   belongs_to :user
+  has_many :sessions, class_name: "CardSession", foreign_key: :card_id, dependent: :destroy
   validates :id_hex, presence: true, uniqueness: true
   validates :name, presence: true
 
