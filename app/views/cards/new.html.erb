@@ -4,27 +4,23 @@
 </head>
 <body>
   <%= render partial: "layouts/navbar" %>
-  <div class="container">
-    <div class="content">
-      <h1>Cards#new</h1>
-      <p>Find me in app/views/cards/new.html.erb</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="box">
-      <%= form_with model: @resource, path: cards_path do |f| %>
-        <div class="field">
-          <%= f.label :name %>
-          <div class="control">
-            <%= f.text_field :name, class: "input" %>
+  <div class="section">
+    <div class="container">
+      <div class="box">
+        <%= form_with model: @resource, path: cards_path do |f| %>
+          <div class="field">
+            <%= f.label :name %>
+            <div class="control">
+              <%= f.text_field :name, class: "input" %>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <div class="control">
-            <%= f.submit "create", class: "button is-link" %>
+          <div class="field">
+            <div class="control">
+              <%= f.submit "create", class: "button is-link" %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </body>

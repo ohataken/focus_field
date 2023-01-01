@@ -4,46 +4,52 @@
 </head>
 <body>
   <%= render partial: "layouts/navbar" %>
-  <div class="container">
-    <div class="content">
-      <h1>Cards#index</h1>
-      <p>Find me in app/views/cards/index.html.erb</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="box">
-      <div class="media">
-        <%= form_with model: Card.new, path: cards_path do |f| %>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <%= f.label :name, class: "label" %>
-            </div>
-            <div class="field-body">
-              <div class="field has-addons">
-                <div class="control is-expanded">
-                  <%= f.text_field :name, class: "input" %>
+  <div class="section">
+    <div class="container">
+      <div class="box">
+        <div class="media">
+          <%= form_with model: Card.new, path: cards_path do |f| %>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <%= f.label :name, class: "label" %>
+              </div>
+              <div class="field-body">
+                <div class="field has-addons">
+                  <div class="control is-expanded">
+                    <%= f.text_field :name, class: "input" %>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <%= f.submit "create", class: "button is-link" %>
+                  </div>
                 </div>
               </div>
-              <div class="field">
-                <div class="control">
-                  <%= f.submit "create", class: "button is-link" %>
-                </div>
+            </div>
+          <% end %>
+        </div>
+        <% @resources.each do |resource| %>
+          <div class="media">
+            <div class="media-content">
+              <div class="content is-small">
+                <%= resource.id_hex %>
+              </div>
+              <div class="content">
+                <p>
+                  <%= resource.name %>
+                </p>
+              </div>
+              <div class="content is-small">
+                created at <%= resource.created_at %>
+              </div>
+              <div class="buttons">
+                <%= link_to "edit", edit_card_path(resource.id_hex), class: "button is-small" %>
+                <%= button_to "finish", card_card_finishes_path(resource.id_hex), method: :post, class: "button is-small"%>
               </div>
             </div>
           </div>
         <% end %>
       </div>
-      <% @resources.each do |resource| %>
-        <div class="media">
-          <div class="media-content">
-            <div class="content">
-              <%= resource.name %>
-              <%= link_to "edit", edit_card_path(resource.id_hex) %>
-              <%= button_to "finish", card_card_finishes_path(resource.id_hex), method: :post, class: "button" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
 </body>
