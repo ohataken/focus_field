@@ -1,0 +1,2 @@
+class CardSession < ApplicationRecord
+end
