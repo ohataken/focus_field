@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resource :sessions, only: [:show, :new, :create, :destroy]
   resources :cards, only: [:index, :new, :create, :show, :edit, :update] do
     resource :card_finishes, only: [:create], path: "finishes"
+    resource :card_images, only: [:show], path: "image"
   end
 
   root 'sessions#show'

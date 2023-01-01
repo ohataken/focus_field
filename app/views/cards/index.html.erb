@@ -30,6 +30,9 @@
         </div>
         <% @resources.each do |resource| %>
           <div class="media">
+            <div class="media-left">
+              <%= image_tag card_card_images_path(resource.id_hex), class: "image is-48x48" %>
+            </div>
             <div class="media-content">
               <div class="content is-small">
                 <%= resource.id_hex %>

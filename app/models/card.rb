@@ -14,4 +14,12 @@ class Card < ApplicationRecord
   def finished?
     finished_at.present?
   end
+
+  def create_image
+    RubyIdenticon.create id_hex
+  end
+
+  def image_filename
+    "card_image_#{id_hex}"
+  end
 end
