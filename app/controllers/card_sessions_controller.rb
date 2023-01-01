@@ -1,0 +1,2 @@
+class CardSessionsController < ApplicationController
+end
