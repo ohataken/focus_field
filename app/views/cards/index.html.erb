@@ -34,16 +34,13 @@
               <%= image_tag card_card_images_path(resource.id_hex), class: "image is-48x48" %>
             </div>
             <div class="media-content">
-              <div class="content is-small">
-                <%= resource.id_hex %>
-              </div>
               <div class="content">
                 <p>
                   <%= resource.name %>
                 </p>
               </div>
               <div class="content is-small">
-                created at <%= resource.created_at %>
+              <%= resource.id_hex %>, created at <%= resource.created_at %>
               </div>
               <div class="buttons">
                 <%= link_to "edit", edit_card_path(resource.id_hex), class: "button is-small" %>
