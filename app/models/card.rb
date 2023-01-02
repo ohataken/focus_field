@@ -35,4 +35,10 @@ class Card < ApplicationRecord
   def has_ongoing_session?
     ongoing_session.present?
   end
+
+  def start_session!
+    session = user.ongoing_session
+    session = sessions.build.start! unless session
+    ongoing_session!
+  end
 end
