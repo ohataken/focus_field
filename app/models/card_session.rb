@@ -18,4 +18,8 @@ class CardSession < ApplicationRecord
     assign_attributes start_at: Time.now
     save!
   end
+
+  def end!
+    update! end_at: Time.now
+  end
 end
