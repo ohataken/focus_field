@@ -12,4 +12,10 @@ class CardSession < ApplicationRecord
   def ended?
     end_at.present?
   end
+
+  def start!
+    assign_attributes user: card.user unless user
+    assign_attributes start_at: Time.now
+    save!
+  end
 end
