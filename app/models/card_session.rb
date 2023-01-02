@@ -5,4 +5,8 @@ class CardSession < ApplicationRecord
   def ongoing?
     end_at.nil?
   end
+
+  def ended?
+    end_at.present?
+  end
 end
