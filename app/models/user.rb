@@ -7,4 +7,16 @@ class User < ApplicationRecord
   after_initialize do |user|
     user.id_hex ||= SecureRandom.hex(8)
   end
+
+  def ongoing_session!
+    @ongoing_session = card_sessions.ongoing.first
+  end
+
+  def ongoing_session
+    @ongoing_session ||= ongoing_session!
+  end
+
+  def has_ongoing_session?
+    ongoing_session.present?
+  end
 end

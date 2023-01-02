@@ -23,4 +23,16 @@ class Card < ApplicationRecord
   def image_filename
     "card_image_#{id_hex}"
   end
+
+  def ongoing_session!
+    @ongoing_session = sessions.ongoing.first
+  end
+
+  def ongoing_session
+    @ongoing_session ||= ongoing_session!
+  end
+
+  def has_ongoing_session?
+    ongoing_session.present?
+  end
 end
