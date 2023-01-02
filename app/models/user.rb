@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def has_ongoing_session?
     ongoing_session.present?
   end
+
+  def end_ongoing_session!
+    ongoing_session.end! if ongoing_session
+  end
 end
