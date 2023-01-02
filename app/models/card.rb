@@ -41,4 +41,9 @@ class Card < ApplicationRecord
     session = sessions.build.start! unless session
     ongoing_session!
   end
+
+  def end_session!
+    session = ongoing_session
+    session.end! if session
+  end
 end

@@ -44,6 +44,7 @@
             <div class="buttons">
               <%= link_to "edit", edit_card_path(resource.id_hex), class: "button is-small" %>
               <%= button_to "start", card_card_sessions_path(resource.id_hex), method: :post, class: "button is-small" %>
+              <%= button_to "end", card_card_sessions_path(resource.id_hex), method: :delete, class: "button is-small" %>
               <%= button_to "finish", card_card_finishes_path(resource.id_hex), method: :post, class: "button is-small"%>
             </div>
           </div>
