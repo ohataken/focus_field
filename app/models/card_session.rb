@@ -3,6 +3,7 @@ class CardSession < ApplicationRecord
   belongs_to :card
 
   scope :ongoing, -> { where(end_at: nil) }
+  scope :ended, -> { where.not(end_at: nil) }
 
   def ongoing?
     end_at.nil?
