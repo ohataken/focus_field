@@ -39,7 +39,7 @@
               </p>
             </div>
             <div class="content is-small">
-            <%= resource.id_hex %>, created at <%= resource.created_at %>
+            <%= resource.id_hex %>, created at <%= resource.created_at %>, <%= card_session_elapsed_time resource.ongoing_session %>
             </div>
             <div class="buttons">
               <%= link_to "edit", edit_card_path(resource.id_hex), class: "button is-small" %>

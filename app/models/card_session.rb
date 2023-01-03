@@ -22,4 +22,12 @@ class CardSession < ApplicationRecord
   def end!
     update! end_at: Time.now
   end
+
+  def duration
+    if end_at and start_at
+      end_at - start_at
+    elsif start_at
+      Time.now - start_at
+    end
+  end
 end
