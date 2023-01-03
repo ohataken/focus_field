@@ -23,6 +23,10 @@ class CardSession < ApplicationRecord
     update! end_at: Time.now
   end
 
+  def now_or_end_at
+    ended? ? end_at : Time.now
+  end
+
   def duration
     if end_at and start_at
       end_at - start_at
