@@ -21,7 +21,7 @@ class Card < ApplicationRecord
   end
 
   def image_filename
-    "card_image_#{id_hex}"
+    "card_image_#{id_hex}.png"
   end
 
   def ongoing_session!
