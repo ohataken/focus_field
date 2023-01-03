@@ -16,6 +16,10 @@ class Card < ApplicationRecord
     finished_at.present?
   end
 
+  def unfinished?
+    finished_at.nil?
+  end
+
   def create_image
     RubyIdenticon.create id_hex
   end
