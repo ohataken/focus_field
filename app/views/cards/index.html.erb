@@ -35,7 +35,7 @@
           <div class="media-content">
             <div class="content">
               <p>
-                <%= resource.name %>
+                <%= tag.span resource.name, style: resource.finished? ? "text-decoration: line-through;" : "" %>
               </p>
             </div>
             <div class="content is-small">
