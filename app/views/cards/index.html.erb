@@ -35,6 +35,7 @@
           <div class="media-content">
             <div class="content">
               <p>
+                <%= tag.span resource.finished? ? "done" : "todo", class: resource.finished? ? "tag is-small is-success is-light" : "tag is-small is-light" %>
                 <%= tag.span resource.name, style: resource.finished? ? "text-decoration: line-through;" : "" %>
               </p>
             </div>
