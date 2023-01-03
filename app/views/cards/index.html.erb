@@ -37,14 +37,16 @@
             <% end %>
           </div>
           <div class="media-content">
-            <div class="content">
+            <div class="content is-small">
               <p>
-                <%= tag.span resource.finished? ? "done" : "todo", class: resource.finished? ? "tag is-small is-success is-light" : "tag is-small is-light" %>
-                <%= tag.span resource.name, style: resource.finished? ? "text-decoration: line-through;" : "" %>
+                <%= card_status_tag resource %>
+                <%= card_session_elapsed_time resource.ongoing_session if resource.has_ongoing_session? %>
+                <%= resource.id_hex %>,
+                created at <%= resource.created_at %>
               </p>
             </div>
-            <div class="content is-small">
-            <%= resource.id_hex %>, created at <%= resource.created_at %>, <%= card_session_elapsed_time resource.ongoing_session %>
+            <div class="content">
+              <%= tag.p resource.name, style: resource.finished? ? "text-decoration: line-through;" : "" %>
             </div>
             <div class="buttons">
               <%= link_to "edit", edit_card_path(resource.id_hex), class: "button is-small" %>
