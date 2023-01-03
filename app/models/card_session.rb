@@ -28,10 +28,6 @@ class CardSession < ApplicationRecord
   end
 
   def duration
-    if end_at and start_at
-      end_at - start_at
-    elsif start_at
-      Time.now - start_at
-    end
+    now_or_end_at - start_at
   end
 end
