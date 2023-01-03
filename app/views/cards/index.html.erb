@@ -30,7 +30,11 @@
       <% @resources.each do |resource| %>
         <div class="media">
           <div class="media-left">
-            <%= image_tag card_card_images_path(resource.id_hex), class: "image is-48x48" %>
+            <% if resource.finished? %>
+              <%= image_tag "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=", class: "image is-48x48" %>
+            <% else %>
+              <%= image_tag card_card_images_path(resource.id_hex, format: :png), class: "image is-48x48" %>
+            <% end %>
           </div>
           <div class="media-content">
             <div class="content">
