@@ -6,15 +6,15 @@
 #
 default: &default
   adapter: postgresql
+  host: localhost
+  username: postgres
+  password: mysecretpassword
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   encoding: unicode
 
 development:
   <<: *default
-  host: localhost
-  username: postgres
-  password: mysecretpassword
   database: focus_field_development
 
 # Warning: The database defined as "test" will be erased and
