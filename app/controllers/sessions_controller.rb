@@ -4,8 +4,14 @@ class SessionsController < ApplicationController
 
   def create
     @resource = User.find_by!(name: params[:name])
-    session[:user_id] = @resource.id
-    redirect_to cards_path
+    @resource.password = params[:password]
+
+    if @resource.match_password?
+      session[:user_id] = @resource.id
+      redirect_to cards_path
+    else
+      render :new
+    end
   end
 
   def destroy

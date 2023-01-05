@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :password
+
   has_many :cards, dependent: :destroy
   has_many :card_sessions, dependent: :destroy
   validates :id_hex, presence: true, uniqueness: true
@@ -7,6 +9,18 @@ class User < ApplicationRecord
   after_initialize do |user|
     user.id_hex ||= SecureRandom.hex(8)
     user.salt ||= SecureRandom.alphanumeric(32)
+  end
+
+  before_validation do |user|
+    user.crypted_password = crypto_password_with_salt if user.password
+  end
+
+  def crypto_password_with_salt
+    Digest::SHA512.hexdigest(password + salt)
+  end
+
+  def match_password?
+    crypted_password == crypto_password_with_salt
   end
 
   def ongoing_session!
