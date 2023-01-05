@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   after_initialize do |user|
     user.id_hex ||= SecureRandom.hex(8)
+    user.salt ||= SecureRandom.alphanumeric(32)
   end
 
   def ongoing_session!
