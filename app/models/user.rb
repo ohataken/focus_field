@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :card_sessions, dependent: :destroy
   validates :id_hex, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true, format: { with: /\A[0-9A-Za-z_]+\z/ }
+  validates :password, length: { in: 8..32 }, if: :new_record?
 
   after_initialize do |user|
     user.id_hex ||= SecureRandom.hex(8)
