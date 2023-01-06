@@ -41,7 +41,6 @@
               <p>
                 <%= card_status_tag resource %>
                 <%= card_session_elapsed_time resource.ongoing_session if resource.has_ongoing_session? %>
-                <%= resource.id_hex %>,
                 created at <%= resource.created_at %>
               </p>
             </div>
