@@ -9,6 +9,7 @@ class Card < ApplicationRecord
   scope :finished, -> { where.not(finished_at: nil) }
   scope :unfinished, -> { where(finished_at: nil) }
   scope :parent_cards, -> { where(card_generation: "parent") }
+  scope :child_cards, -> { where(card_generation: "child") }
 
   after_initialize do |card|
     card.id_hex ||= SecureRandom.hex(16)
