@@ -8,6 +8,7 @@ class Card < ApplicationRecord
   scope :order_by_created_at_desc, -> { order(created_at: :desc) }
   scope :finished, -> { where.not(finished_at: nil) }
   scope :unfinished, -> { where(finished_at: nil) }
+  scope :parent_cards, -> { where(card_generation: "parent") }
 
   after_initialize do |card|
     card.id_hex ||= SecureRandom.hex(16)
