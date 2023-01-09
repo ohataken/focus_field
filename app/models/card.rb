@@ -8,8 +8,8 @@ class Card < ApplicationRecord
   scope :finished, -> { where.not(finished_at: nil) }
   scope :unfinished, -> { where(finished_at: nil) }
 
-  after_initialize do |user|
-    user.id_hex ||= SecureRandom.hex(16)
+  after_initialize do |card|
+    card.id_hex ||= SecureRandom.hex(16)
   end
 
   def finished?
