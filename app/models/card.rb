@@ -28,6 +28,10 @@ class Card < ApplicationRecord
     card_generation == "parent"
   end
 
+  def child_card?
+    card_generation == "child"
+  end
+
   def create_image
     RubyIdenticon.create id_hex
   end
