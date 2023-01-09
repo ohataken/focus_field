@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-    @resources = current_user.cards.order_by_created_at_desc
+    @resources = current_user.cards.parent_cards.order_by_created_at_desc
   end
 
   def new
@@ -21,11 +21,11 @@ class CardsController < ApplicationController
   end
 
   def edit
-    @resource = current_user.cards.find_by!(id_hex: params[:id])
+    @resource = current_user.cards.parent_cards.find_by!(id_hex: params[:id])
   end
 
   def update
-    @resource = current_user.cards.find_by!(id_hex: params[:id])
+    @resource = current_user.cards.parent_cards.find_by!(id_hex: params[:id])
 
     if @resource.update(resource_params)
       redirect_to cards_path
