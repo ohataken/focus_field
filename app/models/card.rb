@@ -3,6 +3,7 @@ class Card < ApplicationRecord
   has_many :sessions, class_name: "CardSession", foreign_key: :card_id, dependent: :destroy
   validates :id_hex, presence: true, uniqueness: true
   validates :name, presence: true
+  validates :card_generation, inclusion: { in: %w(parent child) }
 
   scope :order_by_created_at_desc, -> { order(created_at: :desc) }
   scope :finished, -> { where.not(finished_at: nil) }
@@ -10,6 +11,7 @@ class Card < ApplicationRecord
 
   after_initialize do |card|
     card.id_hex ||= SecureRandom.hex(16)
+    card.card_generation ||= "parent"
   end
 
   def finished?
