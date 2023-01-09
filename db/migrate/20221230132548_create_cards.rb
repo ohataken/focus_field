@@ -4,6 +4,7 @@ class CreateCards < ActiveRecord::Migration[7.0]
       t.string :id_hex, index: { unique: true }
       t.string :name
       t.string :card_generation
+      t.integer :parent_card_id, index: true
       t.integer :user_id, index: true
       t.datetime :finished_at
 
