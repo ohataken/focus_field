@@ -1,2 +1,82 @@
-<h1>ChildCards#index</h1>
-<p>Find me in app/views/child_cards/index.html.erb</p>
+<head>
+  <title>FocusField</title>
+  <%= render partial: "layouts/head_elements" %>
+</head>
+<body>
+  <%= render partial: "layouts/navbar" %>
+  <div class="section">
+    <div class="container">
+      <div class="media">
+        <%= form_with model: Card.new, path: cards_path do |f| %>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <%= f.label :name, class: "label" %>
+            </div>
+            <div class="field-body">
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <%= f.text_field :name, class: "input" %>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <%= f.submit "create", class: "button is-link" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="media">
+        <div class="media-left">
+          <% if @parent_card.finished? %>
+            <%= image_tag "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=", class: "image is-48x48" %>
+          <% else %>
+            <%= image_tag card_card_images_path(@parent_card.id_hex, format: :png), class: "image is-48x48" %>
+          <% end %>
+        </div>
+        <div class="media-content">
+          <div class="content is-small">
+            <p>
+              <%= card_status_tag @parent_card %>
+              <%= card_session_elapsed_time @parent_card.ongoing_session if @parent_card.has_ongoing_session? %>
+              created at <%= @parent_card.created_at %>
+            </p>
+          </div>
+          <div class="content">
+            <%= tag.p @parent_card.name, style: @parent_card.finished? ? "text-decoration: line-through;" : "" %>
+          </div>
+          <div class="buttons">
+            <%= link_to "edit", edit_card_path(@parent_card.id_hex), class: "button is-small" %>
+            <%= button_to "start", card_card_sessions_path(@parent_card.id_hex), method: :post, class: "button is-small" %>
+            <%= button_to "end", card_card_sessions_path(@parent_card.id_hex), method: :delete, class: "button is-small" %>
+            <%= button_to "finish", card_card_finishes_path(@parent_card.id_hex), method: :post, class: "button is-small"%>
+          </div>
+          <% @resources.each do |card| %>
+            <div class="media">
+              <div class="media-left">
+                <% if card.finished? %>
+                  <%= image_tag "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=", class: "image is-48x48" %>
+                <% else %>
+                  <%= image_tag card_card_images_path(card.id_hex, format: :png), class: "image is-48x48" %>
+                <% end %>
+              </div>
+              <div class="media-content">
+                <div class="content is-small">
+                  <p>
+                    <%= card_status_tag card %>
+                    <%= card_session_elapsed_time card.ongoing_session if card.has_ongoing_session? %>
+                    created at <%= card.created_at %>
+                  </p>
+                </div>
+                <div class="content">
+                  <%= tag.p card.name, style: card.finished? ? "text-decoration: line-through;" : "" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
