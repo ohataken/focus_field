@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-    @resources = current_user.cards.parent_cards.order_by_created_at_desc
+    @resources = current_user.cards.parent_cards.order_by_created_at_asc
   end
 
   def new

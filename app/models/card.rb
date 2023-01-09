@@ -8,6 +8,7 @@ class Card < ApplicationRecord
   validates :card_generation, inclusion: { in: %w(parent child) }
 
   scope :order_by_created_at_desc, -> { order(created_at: :desc) }
+  scope :order_by_created_at_asc, -> { order(created_at: :asc) }
   scope :finished, -> { where.not(finished_at: nil) }
   scope :unfinished, -> { where(finished_at: nil) }
   scope :parent_cards, -> { where(card_generation: "parent") }
