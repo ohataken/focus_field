@@ -1,6 +1,8 @@
 class Card < ApplicationRecord
   belongs_to :user
+  belongs_to :parent_card, class_name: "Card", optional: :child_card?
   has_many :sessions, class_name: "CardSession", foreign_key: :card_id, dependent: :destroy
+  has_many :child_cards, class_name: "Card", foreign_key: :parent_card_id, dependent: :destroy
   validates :id_hex, presence: true, uniqueness: true
   validates :name, presence: true
   validates :card_generation, inclusion: { in: %w(parent child) }
