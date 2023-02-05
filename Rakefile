@@ -4,3 +4,11 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+
+namespace :openapi do
+  namespace :generate do
+    task :html2 do
+      sh "openapi-generator generate -i public/openapi.yml -g html2 -o public/openapi"
+    end
+  end
+end
