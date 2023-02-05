@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: focus field
+  description: focus field
+  version: 0.0.1
+servers:
+  - url: https://focus-field.onrender.com/api
+tags:
+  - name: pet
+    description: Everything about your Pets
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+  - name: store
+    description: Access to Petstore orders
+    externalDocs:
+      description: Find out more about our store
+      url: http://swagger.io
+  - name: user
+    description: Operations about user
+paths:
+  /cards:
+    get:
+      summary: get cards
+      description: get cards.
+      operationId: getCards
+      parameters:
+        -
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Card'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Card'
+        '400':
+          description: Invalid status value
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+components:
+  schemas:
+    Card:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
