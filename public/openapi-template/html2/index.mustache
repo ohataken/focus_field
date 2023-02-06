@@ -14,6 +14,9 @@
             <a href="/cards", class="navbar-item">cards</a>
           </div>
           <div class="navbar-end">
+            <div class="navbar-item">
+              <a href="/sessions/new" class="button is-primary">sign in</a>
+            </div>
           </div>
         </div>
       </div>
@@ -22,10 +25,18 @@
       <div class="hero-body">
         <div class="container">
           <p class="title">
-            OpenAPI Summary
+            {{appName}} API Reference
           </p>
           <p class="subtitle">
-            {{appName}}
+            OpenAPI Summary
+          </p>
+          <p>
+            {{#version}}
+              <div class="app-desc">Version: {{{.}}}</div>
+            {{/version}}
+          </p>
+          <p>
+            {{{appDescription}}}
           </p>
         </div>
       </div>
@@ -45,14 +56,6 @@
               {{/operations}}
             {{/apis}}
           {{/apiInfo}}
-          <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-          {{#version}}
-            <div class="app-desc">Version: {{{.}}}</div>
-          {{/version}}
-          <hr>
-          <div id="app-description" class="app-desc">
-              {{{appDescription}}}
-          </div>
         </div>
       </div>
     </div>
