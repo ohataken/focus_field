@@ -11,5 +11,14 @@ Rails.application.routes.draw do
     resources :child_cards, only: [:index, :new, :create, :show, :edit, :update], path: "cards"
   end
 
+  namespace :api do
+    resources :cards, only: [:index, :create, :show, :update, :destroy] do
+      resource :card_finishes, only: [:create], path: "finishes"
+      resource :card_images, only: [:show], path: "image"
+      resource :card_sessions, only: [:create, :show, :destroy], path: "session"
+      resources :child_cards, only: [:index, :new, :create, :show, :edit, :update], path: "cards"
+    end
+  end
+
   root 'sessions#show'
 end
