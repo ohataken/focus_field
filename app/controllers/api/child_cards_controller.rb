@@ -1,2 +1,2 @@
-class Api::ChildCardsController < ApplicationController
+class Api::ChildCardsController < Api::BaseController
 end
